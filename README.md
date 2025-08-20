@@ -1,55 +1,105 @@
 # -Customer-Segmentation-Analysis-on-Brazilian-Olist-Dataset
 A data-driven RFM segmentation revealing customer behavior, loyalty patterns, and strategic insights for e-commerce growth.
-# Customer Segmentation Analysis on Brazilian Olist Dataset
+#
+## 🧠 Overview
 
-## Project Overview
+This project applies the RFM (Recency, Frequency, Monetary) model to segment customers from the Brazilian Olist e-commerce platform. By analyzing purchasing behavior, product preferences, and geographic trends, the project uncovers actionable insights to drive retention, loyalty, and strategic growth.
 
-This project focuses on applying customer segmentation techniques to the Brazilian Olist E-commerce Public Dataset. The primary goal is to categorize customers into distinct behavioral groups based on their purchasing habits, using the RFM (Recency, Frequency, Monetary) model. This analysis provides actionable insights for targeted marketing strategies, customer retention efforts, and personalized customer experiences.
+---
 
-## Dataset
+## 🧪 Methodology
 
-The dataset used in this project is the **Brazilian Olist E-commerce Public Dataset**. It contains information on 100k orders from 2016 to 2018 made at multiple marketplaces in Brazil. It includes various details about orders, customers, products, sellers, and payments.
+### 1️⃣ Data Loading & Merging  
+- Imported five datasets: orders, customers, items, products, and category translations  
+- Merged them into a unified DataFrame for holistic customer analysis
 
-## Methodology
+### 2️⃣ Data Cleaning & Preparation  
+- Converted timestamps to datetime format  
+- Checked and handled missing values  
+- Calculated total revenue per order
 
-This project utilizes the **RFM (Recency, Frequency, Monetary) analysis** technique for customer segmentation.
+### 3️⃣ RFM Metric Calculation  
+- Defined a snapshot date (one day after the last purchase)  
+- Computed:
+  - **Recency**: Days since last purchase  
+  - **Frequency**: Number of orders  
+  - **Monetary**: Total spend
 
-*   **Recency:** How recently did the customer make a purchase? (Lower value indicates more recent activity)
-*   **Frequency:** How often does the customer make purchases? (Higher value indicates more frequent purchases)
-*   **Monetary:** How much money does the customer spend? (Higher value indicates higher spending)
+### 4️⃣ Exploratory Data Analysis (EDA)  
+- Visualized distributions of Recency, Frequency, and Monetary  
+- Identified skewness, outliers, and behavioral patterns
 
-The process involved:
-1.  **Data Preprocessing:** Cleaning and preparing the raw Olist dataset for RFM calculation.
-2.  **RFM Calculation:** Computing Recency, Frequency, and Monetary values for each customer.
-3.  **RFM Scoring:** Assigning scores (e.g., 1-5) to each RFM metric based on quantiles.
-4.  **Customer Segmentation:** Grouping customers into well-defined segments (e.g., Champions, Loyal Customers, At Risk, Lost Customers) based on their combined RFM scores.
-5.  **Segment Analysis:** Analyzing the characteristics and preferences of each segment.
+### 5️⃣ Customer Segmentation  
+- Assigned RFM scores using quintiles  
+- Mapped score combinations to intuitive segments:
+  - Champions
+  - Loyal Customers
+  - Potential Loyalists
+  - New Customers
+  - At Risk
+  - Lost Customers
+  - Others
 
-## Key Findings and Customer Segments
+### 6️⃣ Segment Profiling  
+- Compared average RFM metrics across segments  
+- Visualized segment proportions, profiles, and behavioral clusters
 
-The analysis revealed several distinct customer segments, each with unique characteristics and requiring tailored engagement strategies:
+---
 
-*   **Champions:** Our best customers, who buy recently, frequently, and spend the most. These customers are highly valuable and should be rewarded to maintain loyalty.
-*   **Loyal Customers:** Customers who buy frequently and spend a good amount. They are responsive to promotions and are less likely to churn.
-*   **Potential Loyalists:** Recent customers who have bought frequently but haven't spent much yet. They have the potential to become loyal customers.
-*   **New Customers:** Customers who have made a very recent purchase but haven't purchased frequently or spent much. They need to be nurtured to encourage repeat business.
-*   **At Risk:** Customers who used to buy frequently and spent good money but haven't purchased recently. These customers are at risk of churning and require re-engagement efforts.
-*   **Cannot Lose Them:** Customers who bought big and often but haven't returned for a long time. These are valuable customers who need strong win-back strategies.
-*   **Lost Customers:** Customers who haven't purchased for a long time, bought few times, and spent little. It might be challenging to win them back, but targeted campaigns could be explored.
+## 📈 Key Visuals
 
-**(Optional: If you have visualizations, you can describe them here or add screenshots if this README will live in the repo with images)**
-*   Visualizations were created to show the distribution of customers across segments, average RFM scores per segment, and product category preferences for different segments.
+- Bar Chart: Average RFM metrics per segment  
+- Pie Chart: Segment distribution  
+- Radar Chart: Normalized segment profiles  
+- Scatterplot: Frequency vs. Monetary by segment  
+- Heatmap: Segment performance across RFM metrics  
+- Category Analysis: Top products by purchase count and spend  
+- Geographic Heatmap: Segment distribution across Brazilian states  
+- Trend Line: Monthly segment evolution
 
-## Actionable Insights and Recommendations
+---
 
-Based on the segmentation, the following strategic recommendations can be made for Olist:
+## 💡 Strategic Insights
 
-*   **Reward Champions:** Implement exclusive loyalty programs, early access to new products, or personalized offers to maintain their high engagement.
-*   **Re-engage At Risk Customers:** Send personalized re-engagement campaigns, special discounts, or surveys to understand their changing needs.
-*   **Win Back Lost Customers:** Develop targeted campaigns with significant incentives to encourage a return, focusing on products they previously favored.
-*   **Nurture New Customers:** Provide excellent onboarding experiences, follow-up communications, and small incentives for their next purchase.
-*   **Tailor Product Offerings:** Use segment-specific product preferences (e.g., Champions favoring home & wellness, New Customers exploring entry-level categories) to optimize product recommendations.
-*   **Geographical Targeting:** Utilize insights into the geographical distribution of segments (e.g., concentration of Lost Customers in specific states) for localized marketing initiatives.
+### Segment Behavior
+- **Champions**: Recent, frequent, high spenders—ideal for loyalty programs  
+- **At Risk**: High historical spend but poor recency—prime for reactivation  
+- **Lost Customers**: Long inactive, low value—target with win-back campaigns  
+- **New Customers**: Recent but infrequent—need onboarding and nurturing  
+- **Potential Loyalists**: Moderate scores—ready for upselling
+
+### Product Preferences
+- Champions and Loyal Customers favor home and wellness categories  
+- Lost Customers previously bought similar items—suggesting re-engagement potential  
+- New Customers explore entry-level categories—ideal for introductory promotions  
+- Potential Loyalists lean toward productivity-related products
+
+### Geographic Trends
+- Lost Customers cluster in São Paulo (SP), Rio de Janeiro (RJ), and Minas Gerais (MG)  
+- Champions are geographically diverse—value exists beyond urban centers  
+- Regional segmentation supports localized marketing and inventory planning
+
+### Behavioral Trends
+- Segment sizes fluctuate monthly  
+- Promotions drive spikes in New Customers  
+- Engagement drops correlate with churn
+
+---
+
+## 🎯 Recommendations
+
+- **Retention Focus**: Prioritize At Risk and Potential Loyalists with personalized offers  
+- **Loyalty Programs**: Reward Champions to maintain engagement  
+- **Win-Back Campaigns**: Target Lost Customers in SP, RJ, and MG  
+- **Product Strategy**: Align inventory with segment-specific preferences  
+- **Regional Marketing**: Customize outreach based on geographic insights
+
+---
+
+## 🗣️ Personal Reflection
+
+This project taught me how to turn raw transactional data into strategic insights. I deepened my skills in customer analytics, data storytelling, and visual communication. It’s a perfect example of how data science can bridge the gap between numbers and business impact.
+
 
 ## Technologies Used
 
